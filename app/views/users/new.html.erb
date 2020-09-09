@@ -1,0 +1,8 @@
+<h1>Create user</h1>
+
+<%= form_with(model: @user) do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.submit 'Create user' %>
+<% end %>
