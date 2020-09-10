@@ -19,8 +19,10 @@
     <nav>
       <ul>
       
-      <% if !session[:user].nil? %>
-        <li><%= session[:user]['name'] %></li>
+      <% if !session[:user_id].nil? %>
+        <li><%= link_to @user.name, user_path(@user) %></li>
+        <li><%= link_to 'All events', events_path %></li>
+        <li><%= link_to 'Create event', new_event_path %></li>
         <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Sign in", sign_in_path %></li>

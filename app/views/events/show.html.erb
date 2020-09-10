@@ -1,3 +1,11 @@
 <p id="notice"><%= notice %></p>
 <h2>Belongs to: <%= @event.creator.name %></h2>
+<section class="attendants">
+  <ul class="attendants-list">
+  
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.name %></li>
+  <% end %>
+  </ul>
+</section>
 <%= link_to 'Back', events_path %>

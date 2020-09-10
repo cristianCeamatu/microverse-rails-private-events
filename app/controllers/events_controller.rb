@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /events
   # GET /events.json
@@ -68,6 +69,10 @@ class EventsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_event
       @event = Event.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(session[:user_id]) if session[:user_id]
     end
 
     # Only allow a list of trusted parameters through.

@@ -1,21 +1,28 @@
 <p id="notice"><%= notice %></p>
-<h1>Events</h1>
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= event.date %></td>
-        <td><%= event.location %></td>
-        <td><%= event.description %></td>
-      </tr>
+<section>
+  <h1>Events</h1>
+  <div class="upcoming-events">
+    <h3>Upcoming events</h3>
+    <% if @events.upcoming_events.size.positive? %>
+      <% @events.upcoming_events.each do |event| %>
+        <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
+      <% end %>
+    <% else %>
+      <p>No upcoming events</p>
     <% end %>
-  </tbody>
-</table>
+  </div>
+
+  <div class="past-events">
+    <h3>Past events</h3>
+    <% if @events.past_events.size.positive? %>
+      <% @events.past_events.each do |event| %>
+        <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
+      <% end %>
+    <% else %>
+      <p>No past events</p>
+    <% end %>
+  </div>
+</section>
+
 <br>
 <%= link_to 'New Event', new_event_path %>
