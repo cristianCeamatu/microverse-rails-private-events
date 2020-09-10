@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show]
+  resources :events, only: [:index, :new, :create, :show]
   resources :sessions, only: [:new, :create, :destroy]
   get 'sign_in' => 'sessions#new'
   get 'sign_up' => 'users#new'

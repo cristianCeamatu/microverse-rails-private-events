@@ -1,1 +1,4 @@
 <h1>You are checking user with the name: <%= @user.name %></h1>
+Createb by <% @user.created_events.each do |event| %>
+  <p><%= event.date %></p>
+<% end %>
