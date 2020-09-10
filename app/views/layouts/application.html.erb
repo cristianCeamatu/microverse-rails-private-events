@@ -10,6 +10,25 @@
   </head>
 
   <body>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, class: "alert alert-#{key} alert-dismissable") do %>
+        <%= value %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>   
+      <% end %> 
+    <% end %>
+    <nav>
+      <ul>
+      
+      <% if !session[:user].nil? %>
+        <li><%= session[:user]['name'] %></li>
+        <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign in", sign_in_path %></li>
+        <li><%= link_to "Sign up", sign_up_path %></li>
+      <% end %>
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>
