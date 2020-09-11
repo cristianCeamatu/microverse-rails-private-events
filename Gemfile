@@ -21,6 +21,13 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Run against the latest stable release
+group :development, :test do
+  gem 'rspec-rails', '~> 4.0.1'
+  gem 'hirb', '~> 0.7.3'
+  gem 'database_cleaner'
+end
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
