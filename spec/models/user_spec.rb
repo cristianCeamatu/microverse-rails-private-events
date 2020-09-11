@@ -12,19 +12,19 @@ RSpec.describe User, type: :model do
     it 'can be created' do
       expect(User.first).to eq(@user)
     end
-  
+
     it 'can get the created events' do
       expect(@user.created_events).to eq([@event1, @event2])
     end
-  
+
     it 'can access the events' do
       expect(@user.reload.created_events.first).to eq(@event1)
     end
-  
+
     it 'can attend events' do
       expect(@user.reload.event_attendees.first).to eq(@event_attended)
     end
-  
+
     it 'can access the attend events' do
       expect(@user.reload.event_attendees).to eq([@event_attended])
     end
@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     it 'should be valid' do
       assert @user.valid?
     end
-  
+
     it 'should be not valid when :name above max size 20 characters' do
       @user.name = 'names' * 20
       @user.save

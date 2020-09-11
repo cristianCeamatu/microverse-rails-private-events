@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "CreateEvents", type: :feature do
+RSpec.feature 'CreateEvents', type: :feature do
   before(:each) do
     @user = User.new(name: 'exampleUser')
     @user.save

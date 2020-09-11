@@ -13,7 +13,7 @@
 
 
 ## Screenshot of the project.
-![image](.github/app_screenshot.png)
+![image](.github/app-screenshot.png)
 
 ## Built With
 * Ruby
@@ -53,6 +53,12 @@ You can visit the app at `http://localhost:3000`.<br>
     `rspec`
 
 ## Authors
+
+👤 **Marshall Akpan**
+
+- Github: [uimarshall](https://github.com/uimarshall)
+- Twitter: [uimarshall](https://twitter.com/uimarshall)
+- Linkedin: [Marshall Akpan](https://www.linkedin.com/in/marshall-akpan-19745526/)
 
 👤 **Cristian Viorel Ceamatu**
 
