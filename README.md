@@ -9,7 +9,7 @@
 * Users can create and attend events
 * Events are categorized in past and upcoming events based on their date
 
-## This web app is live, you can check it here: [Live demo](http://t.me/master_search_ruby_bot)
+## This web app is live, you can check it here: [Live demo](https://obscure-sierra-39976.herokuapp.com/)
 
 
 ## Screenshot of the project.
