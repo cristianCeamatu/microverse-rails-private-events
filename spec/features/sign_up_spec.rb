@@ -1,12 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "SignUps", type: :feature do
-  before(:each) do
-    @user = User.new(name: 'exampleUser')
-    @user.save
-  end
-
-  scenario '' do
+RSpec.feature 'SignUps', type: :feature do
+  scenario 'Users can create account' do
     visit sign_up_path
 
     fill_in 'user[name]', with: 'exampleUser'

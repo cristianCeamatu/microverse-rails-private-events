@@ -11,7 +11,7 @@ RSpec.feature 'SignOuts', type: :feature do
 
     fill_in 'name', with: 'exampleUser'
 
-    click_button 'Sign in'
+    click_button 'Sign In'
 
     click_link 'Sign out'
 

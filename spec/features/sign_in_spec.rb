@@ -10,7 +10,7 @@ RSpec.feature 'SignIns', type: :feature do
 
     fill_in 'name', with: 'exampleUser'
 
-    click_button 'Sign in'
+    click_button 'Sign In'
 
     expect(page).to have_content('exampleUser')
   end
