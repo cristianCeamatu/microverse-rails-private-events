@@ -1,17 +1,17 @@
 <%= form_with(model: event, local: true) do |form| %>
-  <% if event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
-      <ul>
-        <% event.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
   <div class="forms mb-4">
     <div class="row">
       <div class="col-md-6 offset-3">
+        <% if event.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(event.errors.count, "error") %> prohibited this event from being saved:</h2>
+            <ul>
+              <% event.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
         <div class="form-group">
           <%= form.label :date %>
           <%= form.date_field  :date, class: 'form-control' %>
