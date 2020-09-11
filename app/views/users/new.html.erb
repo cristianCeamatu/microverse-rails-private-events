@@ -1,8 +1,16 @@
-<h1>Create user</h1>
-
+<h1 class="text-center text-muted">Create user</h1>
 <%= form_with(model: @user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <br>
-  <%= f.submit 'Create user' %>
+  <div class="forms mb-4">
+    <div class="row">
+      <div class="col-md-6 offset-3">
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name , class: 'form-control' %>
+        </div>
+        <div class="actions mt-3">
+          <%= f.submit 'Create user', class: 'btn btn-primary btn-block' %>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
