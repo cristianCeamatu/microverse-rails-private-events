@@ -4,33 +4,64 @@
     <title>TemplateRailsStylelineRubocop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <% flash.each do |key, value| %>
+    <!--<% flash.each do |key, value| %>
       <%= content_tag(:div, class: "alert alert-#{key} alert-dismissable") do %>
         <%= value %>
-        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>   
-      <% end %> 
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <% end %>
     <% end %>
     <nav>
       <ul>
-      
-      <% if !session[:user_id].nil? %>
-        <li><%= link_to @user.name, user_path(@user) %></li>
-        <li><%= link_to 'All events', events_path %></li>
-        <li><%= link_to 'Create event', new_event_path %></li>
-        <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Sign in", sign_in_path %></li>
-        <li><%= link_to "Sign up", sign_up_path %></li>
-      <% end %>
+        <% if !session[:user_id].nil? %>
+          <li><%= link_to @user.name, user_path(@user) %></li>
+          <li><%= link_to 'All events', events_path %></li>
+          <li><%= link_to 'Create event', new_event_path %></li>
+          <li><%= link_to "Sign out", sign_out_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Sign in", sign_in_path %></li>
+          <li><%= link_to "Sign up", sign_up_path %></li>
+        <% end %>
       </ul>
+    </nav>-->
+    <%# Navbar %>
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, class: "alert alert-#{key} alert-dismissable") do %>
+        <%= value %>
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <% end %>
+    <% end %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+      <%= link_to root_path do %>
+        <a class="navbar-brand text-white" href="#">Private Events</a>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <%= link_to root_path do %>
+            <li class="nav-item active text-white">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+          <% end %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <% if !session[:user_id].nil? %>
+            <a ><%= link_to "Signed In as " + @user.name, user_path(@user),class: 'text-white ml-3'  %></a>
+            <a ><%= link_to 'All events', events_path, class: 'btn btn-light my-2 my-sm-0 text-info ml-2' %></a>
+            <a><%= link_to 'Create event', new_event_path, class: 'btn btn-light my-2 my-sm-0 text-info ml-3' %></a>
+            <a><%= link_to "Sign out", sign_out_path, method: :delete, class: 'btn btn-light my-2 my-sm-0 text-info ml-2' %></a>
+          <% else %>
+            <a ><%= link_to "Sign in", sign_in_path, class: 'text-white ml-3' %></a>
+            <a><%= link_to "Sign up", sign_up_path, class: 'text-white ml-3' %></a>
+          <% end %>
+        </form>
+      </div>
     </nav>
-
-    <%= yield %>
+    <div class="container"><%= yield %></div>
   </body>
 </html>

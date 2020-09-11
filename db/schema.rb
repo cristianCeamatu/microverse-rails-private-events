@@ -28,6 +28,11 @@ ActiveRecord::Schema.define(version: 2020_09_10_142420) do
     t.text "description"
   end
 
+  create_table "table_event_attendees", force: :cascade do |t|
+    t.integer "event_attendee_id"
+    t.integer "attendee_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
