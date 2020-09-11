@@ -4,7 +4,13 @@
 
 > In this project, we built by collaborating remotely a private events app following the project requirements from [TheOdinProject website](https://www.theodinproject.com/courses/ruby-on-rails/lessons/associations). The project enforced our skills in using Model associations and create from scratch Models, Controllers, Views, and Migrations.
 
+## App functionality
+* Users can be created, they can sign in and sign out
+* Users can create and attend events
+* Events are categorized in past and upcoming events based on their date
+
 ## This web app is live, you can check it here: [Live demo](http://t.me/master_search_ruby_bot)
+
 
 ## Screenshot of the project.
 ![image](.github/app_screenshot.png)
