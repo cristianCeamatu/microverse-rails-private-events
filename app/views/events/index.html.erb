@@ -1,8 +1,56 @@
 <p id="notice"><%= notice %></p>
 <section>
-  <h1>Events</h1>
-  <div class="upcoming-events">
-    <h3>Upcoming events</h3>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-3">Events</h1>
+    <p class="lead">Checkout All Events As it is happening</p>
+  </div>
+  <h3 class="text-center text-muted">Upcoming events</h3>
+  <hr/>
+  <div class="row mb-5">
+    <% if @events.upcoming_events.size.positive? %>
+      <% @events.upcoming_events.each do |event| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-header bg-primary font-weight-bold h3">
+              Event Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No upcoming events</p>
+    <% end %>
+  </div>
+  <%# Past Events %>
+  <h3 class="text-center text-muted">Past events</h3>
+  <hr/>
+  <div class="row">
+    <% if @events.past_events.size.positive? %>
+      <% @events.past_events.each do |event| %>
+        <div class="col-md-4">
+          <div class="card" style="width: 18rem;">
+            <div class="card-header bg-info font-weight-bold h3">
+              Event Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No past events</p>
+    <% end %>
+  </div>
+  <!--<div class="upcoming-events">
+    <h3 class="text-center">Upcoming events</h3>
     <% if @events.upcoming_events.size.positive? %>
       <% @events.upcoming_events.each do |event| %>
         <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
@@ -11,7 +59,6 @@
       <p>No upcoming events</p>
     <% end %>
   </div>
-
   <div class="past-events">
     <h3>Past events</h3>
     <% if @events.past_events.size.positive? %>
@@ -21,8 +68,7 @@
     <% else %>
       <p>No past events</p>
     <% end %>
-  </div>
+  </div>-->
 </section>
-
 <br>
-<%= link_to 'New Event', new_event_path %>
+<%= link_to 'New Event', new_event_path, class: 'btn btn-outline-success btn-block mb-4 font-weight-bold display-4' %>
