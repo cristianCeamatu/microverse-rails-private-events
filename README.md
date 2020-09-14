@@ -40,13 +40,19 @@ Run `bundle install` to install the gems from the `Gemfile`.<br>
 **Step 4**<br>
 Run `yarn install` to install the npm packages from the `package.json` file.<br>
 **Step 5**<br>
+Run `rails db:migrate` to migrate the database tabels and associations.<br>
+**Step 6**<br>
 Run `rails s` to start the rails server.<br>
-**Step 9**<br>
+**Step 7**<br>
 You can visit the app at `http://localhost:3000`.<br>
 
 ## Tests
 
 1. Open Terminal
+
+2. Migrate the test database:
+
+    `rails db:migrate RAILS_ENV=test`
 
 2. Run the tests with the command:
 

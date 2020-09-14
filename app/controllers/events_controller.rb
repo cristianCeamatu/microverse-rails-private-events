@@ -7,6 +7,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     @event_attendee = EventAttendee.new
+    @past_events = @events.past_events
+    @upcoming_events = @events.upcoming_events
   end
 
   # GET /events/1

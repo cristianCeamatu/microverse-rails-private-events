@@ -5,10 +5,10 @@
     <h3 class="text-center text-muted">Upcoming events</h3>
     <hr/>
     <div class="row mb-5">
-      <% if @user.created_events.upcoming_events.size.positive? %>
-        <% @user.created_events.upcoming_events.each do |event| %>
+      <% if @created_upcoming_events.any? %>
+        <% @created_upcoming_events.each do |event| %>
           <div class="col-md-4">
-            <div class="card" style="width: 18rem;">
+            <div class="card">
               <div class="card-header bg-primary font-weight-bold h3">
                 Event Details
               </div>
@@ -29,8 +29,8 @@
       <h3 class="text-center text-muted">Past events</h3>
       <hr/>
       <div class="row mb-5">
-        <% if @user.created_events.past_events.size.positive? %>
-          <% @user.created_events.past_events.each do |event| %>
+        <% if @created_past_events.any? %>
+          <% @created_past_events.each do |event| %>
             <div class="col-md-4">
               <div class="card" style="width: 18rem;">
                 <div class="card-header bg-primary font-weight-bold h3">
@@ -48,23 +48,13 @@
           <p>No past events by <%= @user.name %></p>
         <% end %>
       </div>
-      <!--<div class="past-events">
-      <h3>Past events</h3>
-      <% if @user.created_events.past_events.size.positive? %>
-        <% @user.created_events.past_events.each do |event| %>
-          <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
-        <% end %>
-      <% else %>
-        <p>No past events by <%= @user.name %></p>
-      <% end %>
-    </div>-->
     </section>
     <section class="text-center">
       <h2>Attended/attending events</h2>
       <div class="upcoming-events">
         <h3>Upcoming events</h3>
-        <% if @user.attended_events.upcoming_events.size.positive? %>
-          <% @user.attended_events.upcoming_events.each do |event| %>
+        <% if @upcoming_events.any? %>
+          <% @upcoming_events.each do |event| %>
             <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
           <% end %>
         <% else %>
@@ -73,8 +63,8 @@
       </div>
       <div class="past-events">
         <h3>Past events</h3>
-        <% if @user.attended_events.past_events.size.positive? %>
-          <% @user.attended_events.past_events.each do |event| %>
+        <% if @past_events.any? %>
+          <% @past_events.each do |event| %>
             <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
           <% end %>
         <% else %>

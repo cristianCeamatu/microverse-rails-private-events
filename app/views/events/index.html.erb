@@ -6,8 +6,8 @@
   <h3 class="text-center text-muted">Upcoming events</h3>
   <hr/>
   <div class="row mb-5">
-    <% if @events.upcoming_events.any? %>
-      <% @events.upcoming_events.each do |event| %>
+    <% if @upcoming_events.any? %>
+      <% @upcoming_events.each do |event| %>
         <div class="col-md-4">
           <div class="card my-2">
             <div class="card-header bg-primary font-weight-bold h3">
@@ -43,8 +43,8 @@
   <h3 class="text-center text-muted">Past events</h3>
   <hr/>
   <div class="row">
-    <% if @events.past_events.any? %>
-      <% @events.past_events.each do |event| %>
+    <% if @past_events.any? %>
+      <% @past_events.each do |event| %>
         <div class="col-md-4">
           <div class="card my-2">
             <div class="card-header bg-info font-weight-bold h3">

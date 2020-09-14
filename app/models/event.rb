@@ -1,9 +1,9 @@
 class Event < ApplicationRecord
-  has_many :event_attendees, foreign_key: :attended_event_id
+  has_many :event_attendees, foreign_key: :attended_event_id, dependent: :destroy
   has_many :attendees, through: :event_attendees, source: :event_attendee
   belongs_to :creator, class_name: 'User'
 
-  scope :upcoming_events, -> { where('date > ?', Date.today) }
+  scope :upcoming_events, -> { where('date >= ?', Date.today) }
   scope :past_events, -> { where('date < ?', Date.today) }
 
   validates :date, presence: true
