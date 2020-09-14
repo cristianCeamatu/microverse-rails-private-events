@@ -28,7 +28,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @user = User.find(session[:user_id])
+    @user = User.find(current_user.id)
     @event = @user.created_events.build(event_params)
 
     respond_to do |format|
@@ -74,7 +74,7 @@ class EventsController < ApplicationController
   end
 
   def set_user
-    @user = User.find(session[:user_id]) if session[:user_id]
+    @user = current_user if current_user
   end
 
   # Only allow a list of trusted parameters through.

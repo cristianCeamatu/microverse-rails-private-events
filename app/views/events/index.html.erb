@@ -6,62 +6,53 @@
   <h3 class="text-center text-muted">Upcoming events</h3>
   <hr/>
   <div class="row mb-5">
-    <% if @upcoming_events.any? %>
-      <% @upcoming_events.each do |event| %>
-        <div class="col-md-4">
-          <div class="card my-2">
-            <div class="card-header bg-primary font-weight-bold h3">
-              Event Details
-            </div>
-            <%= link_to event_path(event) do %>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
-              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
-              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
-            </ul>
-            <% end %>
+    <% @upcoming_events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card my-2">
+          <div class="card-header bg-primary font-weight-bold h3">
+            Event Details
           </div>
-
-          <% if !session[:user_id].nil? && !@user.attended_events.map { |el| el.id }.include?(event.id) %>
-            <%= form_with(model: @event_attendee, url: event_attendees_create_path, local: true) do |form| %>
-              <div class="forms mb-4">
-                <%= form.hidden_field :event_id, class: 'form-control', value: event.id %>
-                <div class="actions">
-                  <%= form.submit 'Attend event', class: 'btn btn-primary btn-block mt-2' %>
-                </div>
-              </div>
-            <% end %>
+          <%= link_to event_path(event) do %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+            <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+            <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+          </ul>
           <% end %>
-
         </div>
-      <% end %>
-    <% else %>
-      <p>No upcoming events</p>
+
+        <% if current_user && !@user.attended_events.map { |el| el.id }.include?(event.id) %>
+          <%= form_with(model: @event_attendee, url: event_attendees_create_path, local: true) do |form| %>
+            <div class="forms mb-4">
+              <%= form.hidden_field :event_id, class: 'form-control', value: event.id %>
+              <div class="actions">
+                <%= form.submit 'Attend event', class: 'btn btn-primary btn-block mt-2' %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     <% end %>
   </div>
   <%# Past Events %>
   <h3 class="text-center text-muted">Past events</h3>
   <hr/>
   <div class="row">
-    <% if @past_events.any? %>
-      <% @past_events.each do |event| %>
-        <div class="col-md-4">
-          <div class="card my-2">
-            <div class="card-header bg-info font-weight-bold h3">
-              Event Details
-            </div>
-            <%= link_to event_path(event) do %>
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
-                <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
-                <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
-              </ul>
-            <% end %>
+    <% @past_events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card my-2">
+          <div class="card-header bg-info font-weight-bold h3">
+            Event Details
           </div>
+          <%= link_to event_path(event) do %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          <% end %>
         </div>
-      <% end %>
-    <% else %>
-      <p>No past events</p>
+      </div>
     <% end %>
   </div>
 </section>

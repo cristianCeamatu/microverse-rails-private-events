@@ -5,8 +5,27 @@
     <h3 class="text-center text-muted">Upcoming events</h3>
     <hr/>
     <div class="row mb-5">
-      <% if @created_upcoming_events.any? %>
-        <% @created_upcoming_events.each do |event| %>
+      <% @created_upcoming_events.each do |event| %>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary font-weight-bold h3">
+              Event Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%# Past Events %>
+    <div class="past-events">
+      <h3 class="text-center text-muted">Past events</h3>
+      <hr/>
+      <div class="row mb-5">
+        <% @created_past_events.each do |event| %>
           <div class="col-md-4">
             <div class="card">
               <div class="card-header bg-primary font-weight-bold h3">
@@ -20,55 +39,20 @@
             </div>
           </div>
         <% end %>
-      <% else %>
-        <p>No upcoming events by <%= @user.name %></p>
-      <% end %>
-    </div>
-    <%# Past Events %>
-    <div class="past-events">
-      <h3 class="text-center text-muted">Past events</h3>
-      <hr/>
-      <div class="row mb-5">
-        <% if @created_past_events.any? %>
-          <% @created_past_events.each do |event| %>
-            <div class="col-md-4">
-              <div class="card" style="width: 18rem;">
-                <div class="card-header bg-primary font-weight-bold h3">
-                  Event Details
-                </div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
-                  <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
-                  <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
-                </ul>
-              </div>
-            </div>
-          <% end %>
-        <% else %>
-          <p>No past events by <%= @user.name %></p>
-        <% end %>
       </div>
     </section>
     <section class="text-center">
       <h2>Attended/attending events</h2>
       <div class="upcoming-events">
         <h3>Upcoming events</h3>
-        <% if @upcoming_events.any? %>
-          <% @upcoming_events.each do |event| %>
-            <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
-          <% end %>
-        <% else %>
-          <p>No upcoming events</p>
+        <% @upcoming_events.each do |event| %>
+          <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
         <% end %>
       </div>
       <div class="past-events">
         <h3>Past events</h3>
-        <% if @past_events.any? %>
-          <% @past_events.each do |event| %>
-            <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
-          <% end %>
-        <% else %>
-          <p>No past events</p>
+        <% @past_events.each do |event| %>
+          <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
         <% end %>
       </div>
     </section>

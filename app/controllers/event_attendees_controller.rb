@@ -1,6 +1,6 @@
 class EventAttendeesController < ApplicationController
   def create
-    @event_attendee = EventAttendee.new(attended_event_id: event_attendee_params['event_id'], event_attendee_id: session[:user_id]) # rubocop: disable Layout/LineLength
+    @event_attendee = EventAttendee.new(attended_event_id: event_attendee_params['event_id'], event_attendee_id: current_user.id) # rubocop: disable Layout/LineLength
 
     redirect_to events_path, notice: 'Attendee successfully created.' if @event_attendee.save
   end
