@@ -1,0 +1,58 @@
+<h1 class="text-muted border border-black text-center mt-3 py-2">You are checking user with the name: <strong class="text-primary"><%= @user.name %></strong></h1>
+<section>
+  <h2 class="text-center display-3">Created events</h2>
+  <div class="upcoming-events">
+    <h3 class="text-center text-muted">Upcoming events</h3>
+    <hr/>
+    <div class="row mb-5">
+      <% @created_upcoming_events.each do |event| %>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary font-weight-bold h3">
+              Event Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%# Past Events %>
+    <div class="past-events">
+      <h3 class="text-center text-muted">Past events</h3>
+      <hr/>
+      <div class="row mb-5">
+        <% @created_past_events.each do |event| %>
+          <div class="col-md-4">
+            <div class="card">
+              <div class="card-header bg-primary font-weight-bold h3">
+                Event Details
+              </div>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+                <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+                <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+              </ul>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </section>
+    <section class="text-center">
+      <h2>Attended/attending events</h2>
+      <div class="upcoming-events">
+        <h3>Upcoming events</h3>
+        <% @upcoming_events.each do |event| %>
+          <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
+        <% end %>
+      </div>
+      <div class="past-events">
+        <h3>Past events</h3>
+        <% @past_events.each do |event| %>
+          <p><%= event.date %> - <%= event.location %> - <%= event.description %></p>
+        <% end %>
+      </div>
+    </section>

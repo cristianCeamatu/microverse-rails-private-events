@@ -1,0 +1,13 @@
+<section class="event my-4">
+<h2>Belongs to: <%= @event.creator.name %></h2>
+<h5 class="text-primary"><span class="text-secondary">Event:</span>  <%= @event.location %> - <%= @event.date %></h5>
+<section class="attendants">
+  <h3 class="h4">People attending/attended this event:</h3>
+  <ul class="attendants-list">
+  <% @event.attendees.each do |attendee| %>
+    <li><%= attendee.name %></li>
+  <% end %>
+  </ul>
+</section>
+<%= link_to 'Back', events_path, class: 'btn btn-primary' %>
+</section>
