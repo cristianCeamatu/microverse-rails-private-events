@@ -20,17 +20,7 @@
           </ul>
           <% end %>
         </div>
-
-        <% if current_user && !@user.attended_events.map { |el| el.id }.include?(event.id) %>
-          <%= form_with(model: @event_attendee, url: event_attendees_create_path, local: true) do |form| %>
-            <div class="forms mb-4">
-              <%= form.hidden_field :event_id, class: 'form-control', value: event.id %>
-              <div class="actions">
-                <%= form.submit 'Attend event', class: 'btn btn-primary btn-block mt-2' %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+        <%= attendance_form(event) %>
       </div>
     <% end %>
   </div>
