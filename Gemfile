@@ -4,12 +4,12 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
+# Bootstrap for styling
+gem 'bootstrap', '~> 4.5', '>= 4.5.2'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
@@ -20,6 +20,13 @@ gem 'jbuilder', '~> 2.7'
 # gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
+
+# Run against the latest stable release
+group :development, :test do
+  gem 'database_cleaner'
+  gem 'hirb', '~> 0.7.3'
+  gem 'rspec-rails', '~> 4.0.1'
+end
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
@@ -44,6 +51,15 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+end
+
+group :development, :test do
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3', '~> 1.4'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

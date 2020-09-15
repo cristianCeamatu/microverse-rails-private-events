@@ -1,0 +1,49 @@
+<section>
+  <div class="jumbotron jumbotron-fluid text-center">
+    <h1 class="display-3">Events</h1>
+    <p class="lead">Checkout All Events As it is happening</p>
+  </div>
+  <h3 class="text-center text-muted">Upcoming events</h3>
+  <hr/>
+  <div class="row mb-5">
+    <% @upcoming_events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card my-2">
+          <div class="card-header bg-primary font-weight-bold h3">
+            Event Details
+          </div>
+          <%= link_to event_path(event) do %>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+            <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+            <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+          </ul>
+          <% end %>
+        </div>
+        <%= attendance_form(event) %>
+      </div>
+    <% end %>
+  </div>
+  <%# Past Events %>
+  <h3 class="text-center text-muted">Past events</h3>
+  <hr/>
+  <div class="row">
+    <% @past_events.each do |event| %>
+      <div class="col-md-4">
+        <div class="card my-2">
+          <div class="card-header bg-info font-weight-bold h3">
+            Event Details
+          </div>
+          <%= link_to event_path(event) do %>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">- <strong>Date:</strong> <%= event.date %></li>
+              <li class="list-group-item">- <strong>Location:</strong> <%= event.location %></li>
+              <li class="list-group-item">- <strong>Description:</strong> <%= event.description %></li>
+            </ul>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>
+<br>
